@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :financial_entries
   resources :financial_years
   resources :category_types
   resources :categories
