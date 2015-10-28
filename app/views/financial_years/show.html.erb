@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @financial_year.year %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @financial_year.budget %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @financial_year.category %>
+</p>
+
+<%= link_to 'Edit', edit_financial_year_path(@financial_year) %> |
+<%= link_to 'Back', financial_years_path %>

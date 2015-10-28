@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :financial_years
   resources :category_types
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.
