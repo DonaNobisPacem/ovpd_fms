@@ -5,10 +5,10 @@
     <%= f.input :alobs %>
     <%= f.input :description %>
     <%= f.input :party_involved %>
-    <%= f.input :transaction_date %>
+    <%= f.input :transaction_date, :as => :date_picker, :placeholder => "DD/MM/YYYY" %>
     <%= f.input :obligation_incurred %>
     <%= f.input :fund_source %>
-    <%= f.association :financial_year %>
+    <%= f.association :financial_year, :as => :hidden %>
   </div>
 
   <div class="form-actions">

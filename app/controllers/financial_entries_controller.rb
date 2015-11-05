@@ -14,7 +14,7 @@ class FinancialEntriesController < ApplicationController
 
   # GET /financial_entries/new
   def new
-    @financial_entry = FinancialEntry.new
+    @financial_entry = FinancialEntry.new(financial_entry_params)
   end
 
   # GET /financial_entries/1/edit

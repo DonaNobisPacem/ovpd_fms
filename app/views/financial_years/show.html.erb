@@ -11,9 +11,50 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @financial_year.category %>
+  <strong>Balance:</strong>
+  <%= @financial_year.yearly_balance %>
 </p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @financial_year.category.description %>
+</p>
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Alobs</th>
+      <th>Description</th>
+      <th>Party involved</th>
+      <th>Transaction date</th>
+      <th>Obligation incurred</th>
+      <th>Fund source</th>
+      <th>Financial year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @financial_year.financial_entries.each do |financial_entry| %>
+      <tr>
+        <td><%= financial_entry.alobs %></td>
+        <td><%= financial_entry.description %></td>
+        <td><%= financial_entry.party_involved %></td>
+        <td><%= financial_entry.transaction_date %></td>
+        <td><%= financial_entry.obligation_incurred %></td>
+        <td><%= financial_entry.fund_source %></td>
+        <td><%= financial_entry.financial_year.year %></td>
+        <td><%= link_to 'Show', financial_entry %></td>
+        <td><%= link_to 'Edit', edit_financial_entry_path(financial_entry) %></td>
+        <td><%= link_to 'Destroy', financial_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Financial entry', new_financial_entry_path(:financial_entry => {:financial_year_id => @financial_year.id}) %>
 
 <%= link_to 'Edit', edit_financial_year_path(@financial_year) %> |
 <%= link_to 'Back', financial_years_path %>

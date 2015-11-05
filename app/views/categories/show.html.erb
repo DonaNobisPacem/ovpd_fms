@@ -1,14 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @category.type %>
-</p>
+
+<h1> <%= @category.description %> </h1>
 
 <p>
   <strong>Positive balance:</strong>
   <%= @category.positive_balance %>
 </p>
+
+<%= link_to 'Add Financial Year', new_financial_year_path(:financial_year => {:category_id => @category.id}) %>
+
+<strong>Financial Years:</strong>
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Budget</th>
+      <th>Balance</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @category.financial_years.each do |financial_year| %>
+      <tr>
+        <td><%= financial_year.year %></td>
+        <td><%= financial_year.budget %></td>
+        <td><%= financial_year.yearly_balance %></td>
+        <td><%= link_to 'Show', financial_year %> | <%= link_to 'Edit', edit_financial_year_path(financial_year) %> | <%= link_to 'Destroy', financial_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

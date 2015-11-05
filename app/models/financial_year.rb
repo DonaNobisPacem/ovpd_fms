@@ -34,5 +34,6 @@ class FinancialYear < ActiveRecord::Base
   		else
   			errors[:base] << "Error has occurred, balance cannot be positive as budget is zero!" if yearly_balance > 0
   		end
+      return true
   	end
 end

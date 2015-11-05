@@ -14,7 +14,7 @@ class FinancialYearsController < ApplicationController
 
   # GET /financial_years/new
   def new
-    @financial_year = FinancialYear.new
+    @financial_year = FinancialYear.new(financial_year_params)
   end
 
   # GET /financial_years/1/edit
