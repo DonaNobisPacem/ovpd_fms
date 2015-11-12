@@ -1,0 +1,17 @@
+<table class="table table-hover table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Spending</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @monthly_spending.each do |month, spending| %>
+      <tr>
+        <td><%= month.strftime("%B") %></td>
+        <td><%= number_with_precision(spending, precision: 2, separator: '.', delimiter: ',') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

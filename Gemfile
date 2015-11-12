@@ -74,6 +74,8 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 gem 'font-awesome-sass'
 gem 'bootstrap-sass'
 gem 'google-webfonts-rails'
+gem 'simple_calendar'
+gem 'groupdate'
 
 # User authentication + registration
 gem 'devise'

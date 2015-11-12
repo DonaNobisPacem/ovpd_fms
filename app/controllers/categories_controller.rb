@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    redirect_to root_path
   end
 
   # GET /categories/1
@@ -65,6 +65,7 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+      @financial_years = @category.financial_years.order("year desc")
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

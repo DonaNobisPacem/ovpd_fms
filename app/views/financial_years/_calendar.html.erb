@@ -1,0 +1,10 @@
+<%= month_calendar events: events, attribute: :transaction_date, previous_link: financial_entries_ajax_previous_link, next_link: financial_entries_ajax_next_link do |date, entries| %>
+  <b class="pull-right"><%= date.strftime("%d") %></b>
+  <% entries.each do |entry| %>
+    <div> 
+    	<%= link_to entry do %>
+    		<li><%= entry.description %></li>
+    	<% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,17 @@
+<table class="table table-hover table-striped table-responsive">
+  <thead>
+    <tr>
+      <th>Week</th>
+      <th>Spending</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @weekly_spending.each do |week, spending| %>
+      <tr>
+        <td><%= week.strftime("%U") %></td>
+        <td><%= number_with_precision(spending, precision: 2, separator: '.', delimiter: ',') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

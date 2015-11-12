@@ -1,5 +1,6 @@
 class FinancialYearsController < ApplicationController
   before_action :set_financial_year, only: [:show, :edit, :update, :destroy]
+  before_action :set_beginning_of_week, only: [:show]
 
   # GET /financial_years
   # GET /financial_years.json
@@ -65,10 +66,19 @@ class FinancialYearsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_financial_year
       @financial_year = FinancialYear.find(params[:id])
+      @financial_entries_cal = @financial_year.financial_entries.order("transaction_date desc")
+      @financial_entries = @financial_entries_cal.paginate(:page => params[:page], :per_page => 15)
+
+      @monthly_spending = @financial_entries_cal.group_by_month(:transaction_date).sum(:obligation_incurred)
+      @weekly_spending = @financial_entries_cal.group_by_week(:transaction_date).sum(:obligation_incurred)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def financial_year_params
       params.require(:financial_year).permit(:year, :budget, :category_id)
+    end
+
+    def set_beginning_of_week
+      Date.beginning_of_week = :sunday
     end
 end

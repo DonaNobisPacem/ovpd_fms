@@ -1,0 +1,28 @@
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>ALOBS</th>
+      <th>Description</th>
+      <th>Party involved</th>
+      <th>Transaction date</th>
+      <th>Obligation incurred</th>
+      <th>Fund source</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @financial_entries.each do |financial_entry| %>
+      <tr>
+        <td class="col-xs-1"><%= link_to financial_entry.alobs, financial_entry %></td>
+        <td class="col-xs-3"><%= financial_entry.description %></td>
+        <td class="col-xs-3"><%= financial_entry.party_involved %></td>
+        <td class="col-xs-2"><%= financial_entry.transaction_date.strftime("%d %B %Y") if financial_entry.transaction_date %></td>
+        <td class="col-xs-1"><%= number_with_precision(financial_entry.obligation_incurred, precision: 2, separator: '.', delimiter: ',') %></td>
+        <td class="col-xs-2"><%= financial_entry.fund_source %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= will_paginate @financial_entries, renderer: BootstrapPagination::Rails %>
+</div>

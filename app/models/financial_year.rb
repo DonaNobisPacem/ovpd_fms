@@ -2,7 +2,7 @@ class FinancialYear < ActiveRecord::Base
   belongs_to :category
 
   validates :category, presence: true
-  validates :year, presence: true, uniqueness: true, numericality: { only_integer: true, :greater_than => 0 }
+  validates :year, presence: true, numericality: { only_integer: true, :greater_than => 0 }
   validates :budget, presence: true, numericality: { :greater_than_or_equal => 0 }
 
   validate :validate_balance
