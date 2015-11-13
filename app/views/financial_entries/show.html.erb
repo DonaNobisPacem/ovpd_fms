@@ -1,39 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Alobs:</strong>
-  <%= @financial_entry.alobs %>
-</p>
+<%= link_to @financial_entry.financial_year do %>
+  <h1><%= @financial_entry.financial_year.category.description %> <%= @financial_entry.financial_year.year %></h1>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @financial_entry.description %>
-</p>
+<div class="jumbotron">
+  <p>
+    <strong>ALOBS:</strong>
+    <%= @financial_entry.alobs %>
+  </p>
 
-<p>
-  <strong>Party involved:</strong>
-  <%= @financial_entry.party_involved %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @financial_entry.description %>
+  </p>
 
-<p>
-  <strong>Transaction date:</strong>
-  <%= @financial_entry.transaction_date %>
-</p>
+  <p>
+    <strong>Party Involved:</strong>
+    <%= @financial_entry.party_involved %>
+  </p>
 
-<p>
-  <strong>Obligation incurred:</strong>
-  <%= @financial_entry.obligation_incurred %>
-</p>
+  <p>
+    <strong>Transaction Date:</strong>
+    <%= @financial_entry.transaction_date.strftime("%d %B %Y") if @financial_entry.transaction_date %>
+  </p>
 
-<p>
-  <strong>Fund source:</strong>
-  <%= @financial_entry.fund_source %>
-</p>
+  <p>
+    <strong>Obligation Incurred:</strong>
+    <%= number_with_precision(@financial_entry.obligation_incurred, precision: 2, separator: '.', delimiter: ',') %>
+  </p>
 
-<p>
-  <strong>Financial year:</strong>
-  <%= @financial_entry.financial_year %>
-</p>
+  <p>
+    <strong>Fund Source:</strong>
+    <%= @financial_entry.fund_source %>
+  </p>
+</div>
 
 <%= link_to 'Edit', edit_financial_entry_path(@financial_entry) %> |
-<%= link_to 'Back', financial_entries_path %>
+<%= link_to 'Back', "javascript:history.back()" %>

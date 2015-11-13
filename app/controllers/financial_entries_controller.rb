@@ -4,7 +4,7 @@ class FinancialEntriesController < ApplicationController
   # GET /financial_entries
   # GET /financial_entries.json
   def index
-    @financial_entries = FinancialEntry.all
+    @financial_entries = FinancialEntry.paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /financial_entries/1

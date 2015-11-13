@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :alobs %>
+    <%= f.input :alobs, :label => "ALOBS" %>
     <%= f.input :description %>
-    <%= f.input :party_involved %>
-    <%= f.input :transaction_date, :as => :date_picker, :placeholder => "DD/MM/YYYY" %>
-    <%= f.input :obligation_incurred %>
-    <%= f.input :fund_source %>
+    <%= f.input :party_involved, :label => "Party" %>
+    <%= f.input :transaction_date, :as => :date_picker, :placeholder => "DD/MM/YYYY", :label => "Transaction Date" %>
+    <%= f.input :obligation_incurred, :label => "Obligation Incurred" %>
+    <%= f.input :fund_source, :label => "Fund Source" %>
     <%= f.association :financial_year, :as => :hidden %>
   </div>
 

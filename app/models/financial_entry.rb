@@ -16,8 +16,16 @@ class FinancialEntry < ActiveRecord::Base
   		return true
   	end
 
+    def has_positive_balance
+      self.financial_year.category.positive_balance
+    end
+
     def obligation_within_balance
-      errors.add(:obligation_incurred, "Obligation incurred cannot exceed remaining balance") if obligation_incurred > self.financial_year.yearly_balance
+      if has_positive_balance
+        errors.add(:obligation_incurred, "Obligation incurred cannot exceed remaining balance") if obligation_incurred > self.financial_year.yearly_balance
+      else
+        return true
+      end
       return true
     end
 end

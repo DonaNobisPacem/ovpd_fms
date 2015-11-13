@@ -19,5 +19,7 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 
+//= require masonry/jquery.masonry
+
 //= require cocoon
 //= require_tree .

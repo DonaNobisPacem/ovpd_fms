@@ -1,6 +1,9 @@
-<h1>Editing Financial Entry</h1>
+<h1><b>Edit Entry</b></h1>
 
-<%= render 'form' %>
+<div class="jumbotron">
+	<%= render 'form' %>
+</div>
 
 <%= link_to 'Show', @financial_entry %> |
-<%= link_to 'Back', financial_entries_path %>
+<%= link_to 'Back', "javascript:history.back()" %>
+

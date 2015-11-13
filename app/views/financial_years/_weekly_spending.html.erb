@@ -1,17 +1,8 @@
-<table class="table table-hover table-striped table-responsive">
-  <thead>
-    <tr>
-      <th>Week</th>
-      <th>Spending</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @weekly_spending.each do |week, spending| %>
-      <tr>
-        <td><%= week.strftime("%U") %></td>
-        <td><%= number_with_precision(spending, precision: 2, separator: '.', delimiter: ',') %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+  <% @weekly_spending.each do |week, spending| %> 
+        <div class="box">
+          <b>Week: </b><%= week.strftime("%B %U") %><br>
+          <b>Spending: </b><%= number_with_precision(spending, precision: 2, separator: '.', delimiter: ',') %>
+        </div>
+  <% end %>
+</div>

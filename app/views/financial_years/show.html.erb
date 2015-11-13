@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1><b><%= @financial_year.category.description %> <%= @financial_year.year %></b></h1>
+<p>
+  <h1>
+    <b><%= @financial_year.category.description %> <%= @financial_year.year %>
+    </b>
+  </h1>
+  <b><%= link_to '<i class="fa fa-edit"></i> Edit'.html_safe, edit_financial_year_path(@financial_year), :class => "pull-right" %></b>
+</p>
+
+
 
 <p>
   <strong>Budget:</strong>
@@ -22,28 +30,39 @@
   <%= render "calendar", events: @financial_entries_cal %>
 </div>
 
+<b>Monthly Spending:</b>
 <div class="row">
-  <div class="col-xs-6">
-    <b>Monthly Spending:</b>
+  <div class="col-xs-4">
     <div id="monthly_spendings" style="background-color:#cccccc;">
       <%= render "monthly_spending" %>
     </div>
   </div>
-  <div class="col-xs-6">
-    <b>Weekly Spending:</b>
-    <div id="weekly_spendings" style="background-color:#cccccc;">
-      <%= render "weekly_spending" %>
+  <div class="col-xs-8">
+    <div id="monthly_spendings_chart">
+      <%= line_chart @monthly_spending %>
     </div>
   </div>
 </div>
 
+<b>Weekly Spending:</b>
+<div class="row">
+  <div class="col-xs-4">
+    <div id="weekly_spendings">
+      <%= render "weekly_spending" %>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <div id="weekly_spendings_chart">
+      <%= line_chart @weekly_spending %>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to '<i class="fa fa-plus"></i> New Entry'.html_safe, new_financial_entry_path(:financial_entry => {:financial_year_id => @financial_year.id}), :class => "pull-right" %>
 <div id="entry_table">
   <%= render "entry_table" %>
 </div>
 
 <br>
 
-<%= link_to 'New Financial entry', new_financial_entry_path(:financial_entry => {:financial_year_id => @financial_year.id}) %>
-
-<%= link_to 'Edit', edit_financial_year_path(@financial_year) %> |
-<%= link_to 'Back', financial_years_path %>
