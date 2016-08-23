@@ -8,9 +8,6 @@
 
 require 'roo'
 
-User.create!([
-	{:first_name => "John Thomas Raphael", :last_name => "Dulay", :email => "johnthomasraphael@gmail.com", :password => "pass1234", :password_confirmation => "pass1234" }
-	])
 
 Category.create!([
 		{:description => "MOOE", :positive_balance => true },
